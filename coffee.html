@@ -56,20 +56,20 @@
         // let coffeeImage = document.querySelector('#coffee-image');
         // $(#coffee-image)
         // coffeeImage.setAttribute('src', 'static/coffee_beans.jpg'); 
-        $('#coffee-image').attr('src', 'static/coffee_beans.jpg')
+        $('#coffee-image').attr('src', 'static/coffee_beans.jpg');
         // coffeeImage.addEventListener('click', makeCoffee);
-
 
     }
 
     function makeCoffee(drinkType){
-        // let drinksOrdered = []
-        // drinksOrdered.push(drinkType);
-        // console.log(`Coffee made was: ${drinkType}`);
+        let drinksOrdered = []
+        drinksOrdered.push(drinkType);
+        console.log(`Coffee made was: ${drinkType}`);
         // let coffeeImage = document.querySelector('#coffee-image');
         $('#coffee-image').attr('src', 'static/coffee_machine.jpg');
         // coffeeImage.setAttribute('src', 'static/coffee_machine.jpg');
-        setTimeout(eventChange, 1500)
+        setTimeout(eventChange, 2500);
+        revenue(drinksOrdered);
 
     }
 
@@ -77,15 +77,35 @@
         // let coffeeImage = document.querySelector('#coffee-image');
         // coffeeImage.setAttribute('src', 'static/coffee_mug.jpg');
         $('#coffee-image').attr('src', 'static/coffee_mug.jpg');
-        setTimeout(coffeeBeans, 1500)
+        setTimeout(coffeeBeans, 1500);
 
     }
+// FIXME
+    function revenue(drinksOrdered){
+            let total = 0
+            for (drink of drinksOrdered){
+                if (drink === 'Espresso'){
+                    total += 3.25;
+            }   else if (drink === 'Latte'){
+                    total += 4.15;
+            }   else if (drink === 'Hot Chocolate'){
+                    total += 2.50;
+                                                }
+            return console.log(total);                                    
+        }
+    }
     
-        $('#coffee-image').attr('src', 'static/coffee_beans.jpg')
-        $('#coffee-image').on('click', makeCoffee)
- 
+        $('#coffee-image').attr('src', 'static/coffee_beans.jpg');
+        $('#coffee-image').on('click', function () { makeCoffee('brew');});
+
+        $('#espresso').on('click', function () { makeCoffee('Espresso');});
+        $('#latte').on('click', function () { makeCoffee('Latte');});
+        $('#hot-chocolate').on('click', function () { makeCoffee('Hot Chocolate');});
 
     // use this JavaScript object in further study step
+
+
+
 
     const prices = {
         "brew": 2.05,
